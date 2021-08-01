@@ -2,18 +2,31 @@ import React from 'react';
 import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 
 import Login from '../pages/auth/Login';
+import Auth from '../pages/layout/Auth';
+import Default from 'pages/layout/Default';
+import { ILayoutProps } from 'models/app/route';
 
-const Routes: React.FC = () => {
+const Layout = (props: ILayoutProps) => {
+  if (props.type === 'auth') {
+    return <Auth>{props.children}</Auth>
+  } else {
+    return <Default>{props.children}</Default>
+  }
+}
+
+const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/">
-          <Login />
-        </Route>
+        <Layout type="auth">
+          <Route path="/">
+           <Login />
+          </Route>
+        </Layout>
         <Route render={() => <Redirect to="/" />}></Route>
       </Switch>
     </BrowserRouter>
   )
 }
 
-export default Routes;
+export default React.memo(Routes);
