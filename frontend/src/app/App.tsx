@@ -2,7 +2,7 @@ import React from 'react';
 import { Reset } from 'styled-reset';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
-import { theme } from '../models/styled/theme';
+import { theme } from './theme';
 
 import Routes from './Routes';
 
@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     width: 100%;
     height: 100%;
-    font-family: 'Roboto', 'Noto Sans KR', sans-serif !important;
+    font-family: 'Noto Sans KR', sans-serif !important;
     font-size: 0.8rem;
     box-sizing: border-box;
 

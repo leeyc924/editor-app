@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface IAuthProps {
-  children: React.ReactNode,
-}
+import * as authTypes from './auth.model';
 
-const Auth = (props: IAuthProps) => {
+const Auth = (props: authTypes.IAuthProps) => {
   return (
     <Container>
       {props.children}

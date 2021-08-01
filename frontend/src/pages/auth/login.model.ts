@@ -1,5 +1,5 @@
 export interface IAccountState {
-  accountId: string,
+  accountId?: string,
   accountEmail: string,
   accountPw: string,
 }

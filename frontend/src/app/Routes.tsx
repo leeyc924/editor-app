@@ -4,7 +4,7 @@ import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import Login from '../pages/auth/Login';
 import Auth from '../pages/layout/Auth';
 import Default from 'pages/layout/Default';
-import { ILayoutProps } from 'models/app/route';
+import { ILayoutProps } from './route.model';
 
 const Layout = (props: ILayoutProps) => {
   if (props.type === 'auth') {

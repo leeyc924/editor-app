@@ -1,12 +1,11 @@
-
 import React from 'react';
 import styled from 'styled-components';
 
-import { IInputProps } from 'models/component/input';
+import * as inputTypes from './input.model';
 
-const Input = ({ type="text", value, onChange }: IInputProps) => {
+const Input = (props: inputTypes.IInputProps) => {
   return (
-    <StyledInput type={type} value={value} onChange={onChange} />
+    <StyledInput {...props} />
   )
 }
 

@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface IDefaultProps {
-  children: React.ReactNode,
-}
+import * as defaultTypes from './default.models';
 
-const Default = (props: IDefaultProps) => {
+const Default = (props: defaultTypes.IDefaultProps) => {
   return (
     <Container>
       {props.children}
