@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import * as defaultTypes from './default.models';
+import * as defaultTypes from './layout.model';
 
 const Default = (props: defaultTypes.IDefaultProps) => {
   return (

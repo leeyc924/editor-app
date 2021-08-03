@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import * as inputTypes from './input.model';
-
-const Input = (props: inputTypes.IInputProps) => {
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
   return (
     <StyledInput {...props} />
   )
@@ -12,7 +10,7 @@ const Input = (props: inputTypes.IInputProps) => {
 const StyledInput = styled.input`
   height: 38px;
   width: 100%;
-  background: ${({ theme }) => theme.background.white};
+  background: ${({ theme }) => theme.white};
   border: 1px solid ${({ theme }) => theme.blue};
   border-radius: 5px;
   padding: 15px;

@@ -1,6 +1,6 @@
-import { IPalette, ITheme } from "styled-components"
+import { ITheme } from "styled-components"
 
-const palette: IPalette = {
+export const theme: ITheme = {
   white: '#FFFFFF',
   black: '#000000',
   grayEEE: '#EEEEEE',
@@ -13,14 +13,4 @@ const palette: IPalette = {
   red: '#F05B5B',
   blue: '#41A1EA',
   green: '#1DC961',
-}
-
-export const theme: ITheme = {
-  ...palette,
-  background: {
-    white: palette.white,
-    gray: palette.grayDF,
-  },
-  button: {
-  }
 }

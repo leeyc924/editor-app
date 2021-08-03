@@ -2,7 +2,7 @@ import React from 'react';
 import { Reset } from 'styled-reset';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
-import { theme } from './theme';
+import { theme } from './them.model';
 
 import Routes from './Routes';
 

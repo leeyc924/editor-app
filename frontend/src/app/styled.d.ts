@@ -1,7 +1,8 @@
 import 'styled-components'
 
 declare module 'styled-components' {
-  export interface IPalette {
+  export interface ITheme {
+    [index: string]: string,
     white: string,
     black: string,
     grayEEE: string,
@@ -16,15 +17,6 @@ declare module 'styled-components' {
     green: string,
   }
 
-  export interface ITheme extends IPalette {
-    button: {},
-    background: {
-      white,
-      gray,
-    },
-  }
-
-  export interface DefaultTheme extends ITheme, IPalette {
-
+  export interface DefaultTheme extends ITheme {
   }
 }

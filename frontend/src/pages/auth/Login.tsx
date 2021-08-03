@@ -2,18 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
 
-import * as loginType from "./login.model";
+import { IAccountState } from "./auth.model";
 
-import Input from "../../component/Input";
+import Input from "../../component/atoms/Input";
+import Button from "../../component/atoms/Button";
 
 const Login = () => {
-  const formik = useFormik<loginType.IAccountState>({
+  const formik = useFormik<IAccountState>({
     initialValues: {
       accountEmail:'',
       accountPw:'',
     },
     onSubmit: () =>{console.log('submit')},
   });
+
   return (
     <Container>
       <LoginBox>
@@ -41,7 +43,7 @@ const Login = () => {
               }
             />
             {formik.errors.accountEmail && formik.touched.accountEmail && (
-             <div className="input-feedback">{formik.errors.accountEmail}</div>
+              <div className="input-feedback">{formik.errors.accountEmail}</div>
             )}
           </InputArea>
           <InputArea>
@@ -55,21 +57,22 @@ const Login = () => {
               type="password"
               onChange={formik.handleChange}
               className={
-                formik.errors.accountEmail && formik.touched.accountEmail
+                formik.errors.accountPw && formik.touched.accountPw
                   ? "text-input error"
                   : "text-input"
               }
             />
             {formik.errors.accountPw && formik.touched.accountPw && (
-             <div className="input-feedback">{formik.errors.accountPw}</div>
+              <div className="input-feedback">{formik.errors.accountPw}</div>
             )}
           </InputArea>
-          <button type="submit" disabled={formik.isSubmitting}>
+          <Button type="submit" disabled={formik.isSubmitting}>
             Submit
-         </button>
+          </Button>
         </LoginForm>
         <Footer>
           <span>계정 저장</span>
+          <span>회원 가입</span>
         </Footer>
       </LoginBox>
     </Container>
@@ -89,7 +92,7 @@ const Container = styled.div`
 const LoginBox = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.background.white};
+  background-color: ${({ theme }) => theme.white};
   border-radius: 50px;
   width: 100%;
   height: 100%;
@@ -118,6 +121,9 @@ const InputArea = styled.div`
 `;
 
 const Footer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 50px;
 `;
 
