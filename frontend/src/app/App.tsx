@@ -48,7 +48,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
-  return (
+  return ( 
     <ThemeProvider theme={theme}>
       <Reset />
       <GlobalStyle />
