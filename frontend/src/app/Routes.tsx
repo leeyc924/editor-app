@@ -1,14 +1,18 @@
 import React from 'react';
-import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 
-import Login from '../pages/auth/Login';
-import Auth from '../pages/layout/Auth';
-import Default from 'pages/layout/Default';
+import Auth from '../pages/auth/Auth';
+import AuthLayout from '../pages/layout/Auth';
+import Default from '../pages/layout/Default';
+
+import { history } from '../module/store';
+
 import { ILayoutProps } from './route.model';
 
 const Layout = (props: ILayoutProps) => {
   if (props.type === 'auth') {
-    return <Auth>{props.children}</Auth>
+    return <AuthLayout>{props.children}</AuthLayout>
   } else {
     return <Default>{props.children}</Default>
   }
@@ -16,16 +20,16 @@ const Layout = (props: ILayoutProps) => {
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <Switch>
         <Layout type="auth">
-          <Route path="/">
-           <Login />
+          <Route path="/login">
+            <Auth />
           </Route>
         </Layout>
-        <Route render={() => <Redirect to="/" />}></Route>
+        <Route render={() => <Redirect to="/login" />}></Route>
       </Switch>
-    </BrowserRouter>
+    </ConnectedRouter>
   )
 }
 

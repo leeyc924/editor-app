@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
   return (
-    <StyledInput {...props} />
+    <StyledInput className="atom-input" {...props} />
   )
 }
 
