@@ -1,0 +1,86 @@
+@mixin button-color($color) {
+  background: $color;
+  &:hover {
+    background: lighten($color, 10%);
+  }
+  &:active {
+    background: darken($color, 10%);
+  }
+
+  &.outline {
+    color: $color;
+    background: none;
+    border: 1px solid $color;
+    &:hover {
+      background: $color;
+      color: white;
+    }
+  }
+}
+
+.common-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  border-radius: 1.125rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-family: 'Noto Sans KR', sans-serif !important;
+
+  &.large {
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+
+  &.medium {
+    height: 2.25rem;
+    font-size: 1rem;
+  }
+
+  &.small {
+    height: 1.75rem;
+    font-size: 0.875rem;
+  }
+
+  &.white {
+    @include button-color($white);
+  }
+  &.black {
+    @include button-color($black);
+  }
+  &.grayEEE {
+    @include button-color($grayEEE);
+  }
+  &.grayDDD {
+    @include button-color($grayDDD);
+  }
+  &.grayCCC {
+    @include button-color($grayCCC);
+  }
+  &.grayDF {
+    @include button-color($grayDF);
+  }
+  &.gray666 {
+    @include button-color($gray666);
+  }
+  &.gray333 {
+    @include button-color($gray333);
+  }
+  &.gray111 {
+    @include button-color($gray111);
+  }
+  &.red {
+    @include button-color($red);
+  }
+  &.blue {
+    @include button-color($blue);
+  }
+  &.green {
+    @include button-color($green);
+  }
+}
