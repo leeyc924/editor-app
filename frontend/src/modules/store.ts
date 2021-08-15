@@ -15,10 +15,10 @@ combineReducers({
 const sagaMiddleware = createSagaMiddleware();
 
 // function* rootSaga() {
-  //   yield all([
-    //     authSaga(),
-    //   ]);
-    // }
+//   yield all([
+//     authSaga(),
+//   ]);
+// }
 
 export const history: History = createBrowserHistory();
 

@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 
-import { IButtonProps, IButtonSize } from './atoms.model';
+import { IButtonProps, IButtonSize } from '../../models/atoms';
 
 const Button = (props: IButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   return <StyledButton {...props} />

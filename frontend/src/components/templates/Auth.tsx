@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
+import { push } from 'connected-react-router';
 
-import LoginBox from "./LoginBox";
+import LoginForm from "./LoginForm";
 
 const Auth = () => {
   return (
@@ -12,7 +14,11 @@ const Auth = () => {
         </span>
       </div>
       <div className="body">
-        <LoginBox />
+        <LoginForm />
+      </div>
+      <div className="footer">
+        <span>계정 저장</span>
+        <span>회원 가입</span>
       </div>
     </Container>
   );
@@ -62,4 +68,10 @@ const Container = styled.div`
   }
 `;
 
-export default React.memo(Auth);
+const mapStateToProps = (state: any) => ({
+  pathname: state.router.location.pathname,
+  search: state.router.location.search,
+  hash: state.router.location.hash,
+});
+
+export default connect(mapStateToProps, { push })(React.memo(Auth));
