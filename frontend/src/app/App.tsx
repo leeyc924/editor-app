@@ -1,5 +1,7 @@
 import React from 'react';
-import { Reset } from 'styled-reset';
+import { ConnectedRouter } from 'connected-react-router';
+
+import { history } from '../modules/store';
 
 import Routes from './Routes';
 
@@ -7,10 +9,9 @@ import '../assets/styles/index.scss';
 
 const App = () => {
   return (
-    <>
-      <Reset />
+    <ConnectedRouter history={history}>
       <Routes />
-    </>
+    </ConnectedRouter>
   );
 }
 
