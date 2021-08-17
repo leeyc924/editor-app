@@ -12,13 +12,13 @@ const LoginBox = () => {
       accountEmail: '',
       accountPw: '',
     },
-    onSubmit: () => {
-      console.log('submit');
-    },
+    onSubmit: (value, event) => {
+      alert(value);
+    }
   });
 
   return (
-    <form className="auth-form" onSubmit={formik.handleSubmit}>
+    <form className="auth-form" onSubmit={e => {formik.handleSubmit(e)}}>
       <div>
         <label htmlFor="accountEmail">Email</label>
         <Input
@@ -57,7 +57,7 @@ const LoginBox = () => {
         )}
       </div>
       <Button type="submit" disabled={formik.isSubmitting}>
-        Submit
+        로그인
       </Button>
     </form>
   );
