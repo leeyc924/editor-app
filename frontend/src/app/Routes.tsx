@@ -5,7 +5,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 const Home = React.lazy(() => import('../components/pages/Home'));
 const Auth = React.lazy(() => import('../components/pages/Auth'));
 
-
 // const Layout = React.memo(({ pathname, isLogin }) => {
 //   if (pathname.indexOf('/account') === 0) {
 //     return <AuthLayout />;
@@ -23,7 +22,6 @@ const Routes = () => {
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/account" component={Auth} />
-        <Route path="*" render={() => <Redirect to="/" />}></Route>
       </Switch>
     </Suspense>
     // </Layout>
