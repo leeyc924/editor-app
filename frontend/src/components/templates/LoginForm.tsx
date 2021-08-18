@@ -5,15 +5,16 @@ import { IAccountState } from '../../models/templates';
 
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
+import { useGetPokemonByNameQuery } from 'modules/rtkTestApi';
 
 const LoginBox = () => {
+  const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur');
   const formik = useFormik<IAccountState>({
     initialValues: {
       accountEmail: '',
       accountPw: '',
     },
     onSubmit: (value, event) => {
-      alert(value);
     }
   });
 
