@@ -6,7 +6,7 @@ import { createBrowserHistory, History } from 'history';
 import createSagaMiddleware from 'redux-saga';
 
 import { AUTH, authReducer } from './authSlice';
-import { pokemonApi } from './rtkTestApi';
+import { api as pokemonApi } from './rtkTestApi';
 
 const createRootReducer = (history: History) =>
 combineReducers({
