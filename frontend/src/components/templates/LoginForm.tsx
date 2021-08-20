@@ -3,13 +3,13 @@ import { useFormik } from 'formik';
 
 import { IAccountState } from '../../models/templates';
 
+import { useLoginQuery } from '../../modules/api';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
-import { api } from 'modules/rtkTestApi';
-import { useDispatch } from 'react-redux';
 
 const LoginBox = () => {
   // const dispatch = useDispatch();
+  const { data, isError, isLoading } = useLoginQuery("accountEmail: 1234, accountPw: 1234");
 
   // useEffect(() => {
   //   dispatch(api.endpoints.getPost.initiate({}));
