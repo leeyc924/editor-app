@@ -9,28 +9,6 @@ const createRootReducer = (history: History) =>
     [api.reducerPath]: api.reducer
   });
 
-// const sagaMiddleware = createSagaMiddleware();
-
-// // function* rootSaga() {
-// //   yield all([
-// //     authSaga(),
-// //   ]);
-// // }
-
-// export const history: History = createBrowserHistory();
-
-// export default function createStore() {
-//   const store = configureStore({
-//     reducer: createRootReducer(history),
-//     devTools: true,
-//     middleware: [routerMiddleware(history), sagaMiddleware, pokemonApi.middleware],
-//   });
-
-  // sagaMiddleware.run(rootSaga);
-  // setupListeners(store.dispatch);
-  // return store;
-// }
-
 export const history: History = createBrowserHistory();
 
 export const store = configureStore({

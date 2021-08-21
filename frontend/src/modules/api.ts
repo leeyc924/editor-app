@@ -1,35 +1,42 @@
+import { createApi, BaseQueryFn } from '@reduxjs/toolkit/query/react';
+import axios, { AxiosRequestConfig, AxiosError } from 'axios';
 
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { request, gql, ClientError } from 'graphql-request'
+const developmentUrl = 'http://localhost:8005/editor';
+const productionUrl = ''; //todo product url 설정
 
-const graphqlBaseQuery = ({ baseUrl }: { baseUrl: string }) => async ({ body }: { body: string }) => {
+const axiosBaseQuery =
+  (
+    { baseUrl }: { baseUrl: string } = { baseUrl: '' },
+  ): BaseQueryFn<
+    {
+      url: string;
+      method: AxiosRequestConfig['method'];
+      data?: AxiosRequestConfig['data'];
+    },
+    unknown,
+    unknown
+  > =>
+  async ({ url, method, data }) => {
     try {
-      const result = await request(baseUrl, body)
-      return { data: result }
-    } catch (error) {
-      if (error instanceof ClientError) {
-        return { error: { status: error.response.status, data: error } }
-      }
-      return { error: { status: 500, data: error } }
+      const result = await axios({ url: baseUrl + url, method, data });
+      return { data: result.data };
+    } catch (axiosError) {
+      let err = axiosError as AxiosError;
+      return {
+        error: { status: err.response?.status, data: err.response?.data },
+      };
     }
-  }
+  };
 
 export const api = createApi({
-  baseQuery: graphqlBaseQuery({ baseUrl: "http://localhost:8005/graphql" }),
+  baseQuery: axiosBaseQuery({
+    baseUrl: process.env.NODE_ENV !== 'production' ? developmentUrl : productionUrl,
+  }),
   endpoints: (build) => ({
-    login: build.query<any, string>({
-      query: () => ({
-        body: gql`
-          mutation{
-            login(accountEmail: "1234", accountPw:"1234"){
-              accessToken
-            }
-          }
-        `,
-      }),
-      transformResponse: (response) => response.posts.data,
+    login: build.mutation<any, any>({
+      query: (data) => ({ url: '/account/login', method: 'post', data }),
     }),
-  })
+  }),
 });
 
-export const { useLoginQuery } = api;
+export const { useLoginMutation } = api;

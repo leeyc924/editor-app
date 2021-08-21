@@ -3,17 +3,12 @@ import { useFormik } from 'formik';
 
 import { IAccountState } from '../../models/templates';
 
-import { useLoginQuery } from '../../modules/api';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
+import { useLoginMutation } from 'modules/api';
 
 const LoginBox = () => {
-  // const dispatch = useDispatch();
-  const { data, isError, isLoading } = useLoginQuery("accountEmail: 1234, accountPw: 1234");
-
-  // useEffect(() => {
-  //   dispatch(api.endpoints.getPost.initiate({}));
-  // }, [dispatch]);
+  const [login, { isLoading }] = useLoginMutation();
 
   const formik = useFormik<IAccountState>({
     initialValues: {
@@ -21,6 +16,7 @@ const LoginBox = () => {
       accountPw: '',
     },
     onSubmit: (value, event) => {
+      login({ accountEmail: value.accountEmail, accountPw: value.accountPw });
     }
   });
 
