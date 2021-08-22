@@ -7,21 +7,20 @@ import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import { useLoginMutation } from 'modules/api';
 
-const LoginBox = () => {
-  const [login, { isLoading }] = useLoginMutation();
-
-  const formik = useFormik<IAccountState>({
-    initialValues: {
-      accountEmail: '',
-      accountPw: '',
-    },
-    onSubmit: (value, event) => {
-      login({ accountEmail: value.accountEmail, accountPw: value.accountPw });
-    }
-  });
+const LoginForm = () => {
+//   const [login, { status }] = useLoginMutation();
+const formik = useFormik<IAccountState>({
+  initialValues: {
+    accountEmail: '',
+    accountPw: '',
+  },
+  onSubmit: (value, event) => {
+    // login({ accountEmail: value.accountEmail, accountPw: value.accountPw });
+  }
+});
 
   return (
-    <form className="auth-form" onSubmit={e => {formik.handleSubmit(e)}}>
+    <form className="auth-form" onSubmit={e => formik.handleSubmit(e)}>
       <div>
         <label htmlFor="accountEmail">Email</label>
         <Input
@@ -31,15 +30,15 @@ const LoginBox = () => {
           type="text"
           value={formik.values.accountEmail}
           onChange={formik.handleChange}
-          className={
-            formik.errors.accountEmail && formik.touched.accountEmail
-              ? 'text-input error'
-              : 'text-input'
-          }
+          // className={
+          //   formik.errors.accountEmail && formik.touched.accountEmail
+          //     ? 'text-input error'
+          //     : 'text-input'
+          // }
         />
-        {formik.errors.accountEmail && formik.touched.accountEmail && (
+        {/* {formik.errors.accountEmail && formik.touched.accountEmail && (
           <div className="input-feedback">{formik.errors.accountEmail}</div>
-        )}
+        )} */}
       </div>
       <div>
         <label htmlFor="accountPw">Password</label>
@@ -49,21 +48,22 @@ const LoginBox = () => {
           name="accountPw"
           type="password"
           onChange={formik.handleChange}
-          className={
-            formik.errors.accountPw && formik.touched.accountPw
-              ? 'text-input error'
-              : 'text-input'
-          }
+          value={formik.values.accountPw}
+          // className={
+          //   formik.errors.accountPw && formik.touched.accountPw
+          //     ? 'text-input error'
+          //     : 'text-input'
+          // }
         />
-        {formik.errors.accountPw && formik.touched.accountPw && (
+        {/* {formik.errors.accountPw && formik.touched.accountPw && (
           <div className="input-feedback">{formik.errors.accountPw}</div>
-        )}
+        )} */}
       </div>
-      <Button type="submit" disabled={formik.isSubmitting}>
+      <Button type="submit">
         로그인
       </Button>
     </form>
   );
 };
 
-export default React.memo(LoginBox);
+export default React.memo(LoginForm);

@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.8",
+    "@welldone-software/why-did-you-render": "6.2.0",
     "sass": "^1.37.5"
   }
 }

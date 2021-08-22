@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { push } from 'connected-react-router';
 
 import LoginForm from "../templates/LoginForm";
+import SignupForm from "components/templates/SignupForm";
 
 const Auth = () => {
   return (
@@ -13,7 +14,8 @@ const Auth = () => {
         </span>
       </div>
       <div className="body">
-        <LoginForm />
+        {/* <LoginForm /> */}
+        <SignupForm />
       </div>
       <div className="footer">
         <span>계정 저장</span>

@@ -2,8 +2,11 @@ import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-const Home = React.lazy(() => import('../components/pages/Home'));
-const Auth = React.lazy(() => import('../components/pages/Auth'));
+import Home from '../components/pages/Home';
+import Auth from '../components/pages/Auth';
+
+// const Home = React.lazy(() => import('../components/pages/Home'));
+// const Auth = React.lazy(() => import('../components/pages/Auth'));
 
 // const Layout = React.memo(({ pathname, isLogin }) => {
 //   if (pathname.indexOf('/account') === 0) {
@@ -18,12 +21,12 @@ const Auth = React.lazy(() => import('../components/pages/Auth'));
 const Routes = () => {
   return (
     // <Layout>
-    <Suspense fallback={() => <div>isloading</div>}>
+    // <Suspense fallback={() => <div>isloading</div>}>
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/account" component={Auth} />
       </Switch>
-    </Suspense>
+    // </Suspense>
     // </Layout>
   )
 }

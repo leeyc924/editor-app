@@ -1,4 +1,4 @@
-import React from 'react';
+import './wdyr';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
