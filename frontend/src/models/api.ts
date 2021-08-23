@@ -16,3 +16,8 @@ export interface IAccount {
   regDt: String,
   modDt: String,
 }
+
+export interface ILogin {
+  accountEmail: string;
+  accountPw: string;
+}
