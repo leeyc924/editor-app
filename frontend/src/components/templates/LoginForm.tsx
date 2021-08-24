@@ -1,16 +1,23 @@
 import React, { useEffect } from 'react';
-import { Field, Formik, useFormik } from 'formik';
+import { Field, Formik } from 'formik';
 
 import { IAccountState } from '../../models/templates';
 
-import Input from '../atoms/Input';
 import Button from '../atoms/Button';
-import { useLoginMutation } from '../../modules/accountApi';
+import { useLoginMutation } from 'modules/accountApi';
 
+const initialValues: IAccountState = { accountEmail: '', accountPw: '' };
 const LoginForm = () => {
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { data, error, isSuccess, isError }] = useLoginMutation();
 
-  const initialValues: IAccountState = { accountEmail: '', accountPw: '' };
+  useEffect(() => {
+    if (isSuccess && data) {
+      localStorage.setItem('accessToken', data.accessToken);
+    } else if (isError && error) {
+      alert('로그인 에러!');
+    }
+  }, [isSuccess, isError, data, error])
+
 
   return (
     <Formik

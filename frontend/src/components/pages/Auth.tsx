@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { push } from 'connected-react-router';
 
 import LoginForm from "../templates/LoginForm";
+import { useLoginMutation } from "modules/accountApi";
 
 const Auth = () => {
   return (
