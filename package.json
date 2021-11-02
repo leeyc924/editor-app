@@ -15,6 +15,7 @@
     "classnames": "2.3.1",
     "connected-react-router": "^6.9.1",
     "dayjs": "^1.10.6",
+    "firebase": "9.2.0",
     "formik": "^2.2.9",
     "immer": "^9.0.5",
     "polished": "^4.1.3",
