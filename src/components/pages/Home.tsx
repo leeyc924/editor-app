@@ -1,14 +1,21 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { push } from 'connected-react-router';
-
-import Button from "components/atoms/Button";
+import axios from "axios";
+import React, { useEffect } from "react";
 
 const Home = () => {
-  const dispatch = useDispatch();
+  useEffect(() => {
+    try {
+      const result = axios({
+        url: 'https://fass-editor-api.herokuapp.com/ping',
+        method: 'get',
+      });
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   return (
-    <Button onClick={() => dispatch(push('/account'))}>로그인</Button>
+    <div>hello world</div>
   );
 };
 
