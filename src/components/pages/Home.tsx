@@ -5,7 +5,8 @@ const Home = () => {
   useEffect(() => {
     try {
       const result = axios({
-        url: 'https://fass-editor-api.herokuapp.com/ping',
+        // url: 'https://fass-editor-api.herokuapp.com/ping',
+        url: 'http://localhost:8005/editor/ping',
         method: 'get',
       });
       console.log(result);
