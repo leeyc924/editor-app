@@ -1,0 +1,27 @@
+.common-input {
+  height: 38px;
+  width: 100%;
+  background: $white;
+  border: 1px solid $blue100;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 13px;
+  font-weight: 500;
+  color: $gray800;
+
+  &::placeholder {
+    color: $gray500;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  &:hover::placeholder {
+    color: $gray800;
+  }
+  &:hover {
+    border: 1px solid $blue100;
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid $blue100;
+  }
+}
