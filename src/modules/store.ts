@@ -1,18 +1,15 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { createBrowserHistory, History } from 'history';
+import { accountApi } from './accountApi';
 
-const createRootReducer = (history: History) =>
+const createRootReducer = () =>
   combineReducers({
-    router: connectRouter(history),
+    [accountApi.reducerPath]: accountApi.reducer,
   });
 
-export const history: History = createBrowserHistory();
-
 export const store = configureStore({
-  reducer: createRootReducer(history),
+  reducer: createRootReducer(),
   devTools: true,
-  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), routerMiddleware(history)],
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), accountApi.middleware],
 });
 
 export type RootState = ReturnType<typeof store.getState>;

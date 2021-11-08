@@ -9,7 +9,6 @@ interface AccounFieldProps {
 }
 
 const AccounField = ({ label, id, type, placeholder }: AccounFieldProps) => {
-  console.log(`${id} render`);
   return (
     <div className="account-field">
       <label htmlFor={id}>{label}</label>

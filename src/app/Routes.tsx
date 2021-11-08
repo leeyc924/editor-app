@@ -1,24 +1,51 @@
+import { Navigate } from 'react-router-dom';
+import { useRoutes } from 'react-router';
+
 import Account from 'components/pages/Account';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Switch, Redirect, Route } from 'react-router-dom';
 
-// import Home from '../components/pages/Home';
-
+const routeList = () => [
+  {
+    path: '/',
+    element: <Navigate to="/account/login" />,
+  },
+  {
+    path: '/account/*',
+    element: <Account />,
+  }
+];
 const Routes = () => {
-  return (
-    <Switch>
-      <Route path="/" component={() => <Redirect to="/account" />} exact />
-      <Route path="/account" component={Account} exact />
-      <Route render={() => <Redirect to="/" />}></Route>
-    </Switch>
-  )
-}
+  const element = useRoutes(routeList());
+  return element;
+};
 
-const mapStateToProps = (state: any) => ({
-  pathname: state.router.location.pathname,
-  search: state.router.location.search,
-  hash: state.router.location.hash,
-});
+export default Routes;
 
-export default connect(mapStateToProps, null)(React.memo(Routes));
+// const routes = (isLoggedIn) => [
+//   {
+//     path: '/app',
+//     element: isLoggedIn ? <DashboardLayout /> : <Navigate to="/login" />,
+//     children: [
+//       { path: '/dashboard', element: <Dashboard /> },
+//       { path: '/account', element: <Account /> },
+//       { path: '/', element: <Navigate to="/app/dashboard" /> },
+//       {
+//         path: 'member',
+//         element: <Outlet />,
+//         children: [
+//           { path: '/', element: <MemberGrid /> },
+//           { path: '/add', element: <AddMember /> },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     path: '/',
+//     element: !isLoggedIn ? <MainLayout /> : <Navigate to="/app/dashboard" />,
+//     children: [
+//       { path: 'login', element: <Login /> },
+//       { path: '/', element: <Navigate to="/login" /> },
+//     ],
+//   },
+// ];
+
+// export default routes;
