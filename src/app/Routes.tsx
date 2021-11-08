@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Redirect, Route } from 'react-router-dom';
 
-import Home from '../components/pages/Home';
+// import Home from '../components/pages/Home';
 
 const Routes = () => {
   return (
