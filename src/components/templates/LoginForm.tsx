@@ -6,7 +6,7 @@ import { ILoginState } from 'models/account';
 import AccounField from '../molecules/AccounField';
 
 import Button from 'components/atoms/Button';
-import { useLoginMutation } from 'modules/accountApi';
+import { useLoginMutation } from 'modules/accountSlice';
 import { Link } from 'react-router-dom';
 
 const initialValues: ILoginState = { accountId: '', accountPw: '' };
