@@ -1,6 +1,5 @@
-import { BaseQueryFn } from '@reduxjs/toolkit/query/react';
-import { createApi } from '@reduxjs/toolkit/dist/query';
-import axios, { AxiosRequestConfig, AxiosError, Method } from 'axios';
+import { createApi, BaseQueryFn } from '@reduxjs/toolkit/query/react';
+import axios, { AxiosRequestConfig, AxiosError } from 'axios';
 
 const developmentUrl = 'http://localhost:8005/editor';
 const productionUrl = 'https://fass-editor-api.herokuapp.com/editor';

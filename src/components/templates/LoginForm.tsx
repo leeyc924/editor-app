@@ -1,41 +1,54 @@
-import React, { useEffect } from 'react';
-import { Formik } from 'formik';
+import React, { useEffect, useRef } from 'react';
+import { Field, Formik } from 'formik';
+import { useNavigate } from 'react-router';
 
 import { ILoginState } from 'models/account';
 
-import AccounField from '../molecules/AccounField';
-
 import Button from 'components/atoms/Button';
-import { useLoginMutation } from 'modules/accountSlice';
-import { Link } from 'react-router-dom';
 
-const initialValues: ILoginState = { accountId: '', accountPw: '' };
+import { useLoginMutation } from 'modules/accountApi';
+
+const initialValues: ILoginState = { accountId: localStorage.getItem('accountId') || '', accountPw: '', isSaveAccountId: localStorage.getItem('saveAccountIdYn') === 'Y' ? true : false };
 
 const LoginForm = () => {
   const [login, { data, error, isSuccess, isError }] = useLoginMutation();
-
+  const saveAccountIdYn = useRef('N');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isSuccess && data) {
+      localStorage.setItem('saveAccountIdYn', saveAccountIdYn.current);
       localStorage.setItem('accessToken', data.accessToken);
+      navigate('/main');
     } else if (isError && error) {
       alert('로그인 에러!');
     }
-  }, [isSuccess, isError, data, error]);
+  }, [navigate, isSuccess, isError, data, error]);
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={values => {
+        saveAccountIdYn.current = values.isSaveAccountId ? 'Y' : 'N';
         login({ accountId: values.accountId, accountPw: values.accountPw });
       }}
     >
       {formik => (
         <form className="account-form" onSubmit={e => formik.handleSubmit(e)}>
-          <AccounField type="text" id="accountId" label="ID" placeholder="Enter your ID" />
-          <AccounField type="password" id="accountPw" label="Password" placeholder="Enter your Password" />
+          <Field className="common-input first" type="text" id="accountId" name="accountId" placeholder="아이디" />
+          <Field
+            className="common-input last"
+            type="password"
+            id="accountPw"
+            name="accountPw"
+            placeholder="비밀번호"
+            autoComplete="off"
+          />
           <Button type="submit">로그인</Button>
-          <Link to="/account/signup">회원가입</Link>
+          <span className="find">
+            <span><Field className="save-id-checkbox" type="checkbox" id="isSaveAccountId" name="isSaveAccountId" /><label htmlFor="isSaveAccountId">계정저장</label></span>
+            <span onClick={() => navigate('/account/signup')}>회원가입</span>
+          </span>
         </form>
       )}
     </Formik>

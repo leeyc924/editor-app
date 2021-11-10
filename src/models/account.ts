@@ -1,6 +1,7 @@
 export interface ILoginState {
   accountId: string;
   accountPw: string;
+  isSaveAccountId: boolean;
 }
 
 export interface ISignupState extends ILoginState {
@@ -8,17 +9,22 @@ export interface ISignupState extends ILoginState {
 }
 
 export interface IAccount {
-  accountId: string,
-  accountPw: string,
-  accountNm: string,
-  lastLoginDt: string,
-  pwChangeDt: string,
-  useYn: 'Y' | 'N',
-  modDt: string,
-  regDt: string,
-  delYn: 'Y' | 'N',
-  delDt: string,
-  permission: 'USER' | 'ADMIN',
+  accountId: string;
+  accountPw: string;
+  accountNm: string;
+  lastLoginDt: string;
+  pwChangeDt: string;
+  useYn: 'Y' | 'N';
+  modDt: string;
+  regDt: string;
+  delYn: 'Y' | 'N';
+  delDt: string;
+  permission: 'USER' | 'ADMIN';
+}
+
+export interface IAccountSliceState {
+  isLogin: boolean;
+  accountInfo: IAccount | {};
 }
 
 

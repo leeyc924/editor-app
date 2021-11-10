@@ -1,24 +1,27 @@
 import React, { useEffect } from 'react';
-import { Formik } from 'formik';
+import { useNavigate } from 'react-router';
+import { Field, Formik } from 'formik';
 
 import { ISignupState } from 'models/account';
 
-import AccounField from '../molecules/AccounField';
-
 import Button from 'components/atoms/Button';
-import { useSignupMutation } from 'modules/accountSlice';
+
+import { useSignupMutation } from 'modules/accountApi';
 
 const SignupForm = () => {
-  const initialValues: ISignupState = { accountId: '', accountPw: '', accountNm: '' };
+  const initialValues: ISignupState = { accountId: '', accountPw: '', accountNm: '', isSaveAccountId: true };
   const [signup, { data, error, isSuccess, isError }] = useSignupMutation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isSuccess && data) {
+      localStorage.setItem('saveAccountIdYn', 'Y');
       localStorage.setItem('accessToken', data.accessToken);
+      navigate('/main');
     } else if (isError && error) {
-      alert('로그인 에러!');
+      alert('회원가입 에러!');
     }
-  }, [isSuccess, isError, data, error]);
+  }, [isSuccess, isError, data, error, navigate]);
 
   return (
     <Formik
@@ -29,10 +32,20 @@ const SignupForm = () => {
     >
       {formik => (
         <form className="account-form" onSubmit={e => formik.handleSubmit(e)}>
-          <AccounField type="text" id="accountId" label="ID" placeholder="Enter your ID" />
-          <AccounField type="password" id="accountPw" label="Password" placeholder="Enter your Password" />
-          <AccounField type="text" id="accountNm" label="Name" placeholder="Enter your Name" />
+          <Field className="common-input first" type="text" id="accountId" name="accountId" placeholder="아이디" />
+          <Field
+            className="common-input"
+            type="password"
+            id="accountPw"
+            name="accountPw"
+            placeholder="비밀번호"
+            autoComplete="off"
+          />
+          <Field className="common-input last" type="text" id="accountNm" name="accountNm" placeholder="이름" />
           <Button type="submit">회원가입</Button>
+          <span className="find">
+            <span onClick={() => navigate('/account/login')}>취소</span>
+          </span>
         </form>
       )}
     </Formik>

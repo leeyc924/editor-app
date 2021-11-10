@@ -1,20 +1,38 @@
 import { Navigate } from 'react-router-dom';
-import { useRoutes } from 'react-router';
+import { RouteObject, useRoutes } from 'react-router';
 
 import Account from 'components/pages/Account';
+import LoginForm from 'components/templates/LoginForm';
+import SignupForm from 'components/templates/SignupForm';
+import Main from 'components/pages/Main';
 
-const routeList = () => [
+const routeList: RouteObject[] = [
   {
     path: '/',
     element: <Navigate to="/account/login" />,
   },
   {
-    path: '/account/*',
+    path: 'account',
     element: <Account />,
+    children: [
+      {
+        path: 'login',
+        element: <LoginForm />,
+      },
+      {
+        path: 'signup',
+        element: <SignupForm />,
+      },
+    ],
+  },
+  {
+    path: 'main/*',
+    element: <Main />
   }
 ];
+
 const Routes = () => {
-  const element = useRoutes(routeList());
+  const element = useRoutes(routeList);
   return element;
 };
 

@@ -1,6 +1,7 @@
 @import './palette.scss';
 @import './input.scss';
 @import './button.scss';
+@import './account.scss';
 
 // reset css
 html, body, div, span, applet, object, iframe,
@@ -58,7 +59,7 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Noto Sans KR', sans-serif !important;
-  font-size: 0.8rem;
+  font-size: 1rem;
   box-sizing: border-box;
 
   #root {

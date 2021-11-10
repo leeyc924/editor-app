@@ -1,16 +1,11 @@
 import React from 'react';
 
-import LoginForm from 'components/templates/LoginForm';
-import { Route, Routes } from 'react-router';
-import SignupForm from 'components/templates/SignupForm';
+import { Outlet } from 'react-router';
 
 const Account = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/signup" element={<SignupForm />} />
-      </Routes>
+    <div className="account-container">
+      <Outlet />
     </div>
   );
 };
