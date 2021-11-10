@@ -6,7 +6,7 @@ import { ISignupState } from 'models/account';
 import AccounField from '../molecules/AccounField';
 
 import Button from 'components/atoms/Button';
-import { useSignupMutation } from 'modules/accountApi';
+import { useSignupMutation } from 'modules/accountSlice';
 
 const SignupForm = () => {
   const initialValues: ISignupState = { accountId: '', accountPw: '', accountNm: '' };
