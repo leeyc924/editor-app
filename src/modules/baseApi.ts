@@ -28,17 +28,7 @@ const axiosBaseQuery =
         data,
       });
 
-      if (response) {
-        if (response.status === 200) {
-          return { data: response.data };
-        } else {
-          throw Object.assign(new Error('api error'), {
-            status: response.status,
-          });
-        }
-      } else {
-        throw new Error('api error');
-      }
+      return { data: response.data };
     } catch (axiosError) {
       let err = axiosError as AxiosError;
 

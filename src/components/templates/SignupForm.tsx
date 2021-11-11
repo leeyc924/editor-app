@@ -32,15 +32,8 @@ const SignupForm = () => {
     >
       {formik => (
         <form className="account-form" onSubmit={e => formik.handleSubmit(e)}>
-          <Field className="common-input first" type="text" id="accountId" name="accountId" placeholder="아이디" />
-          <Field
-            className="common-input"
-            type="password"
-            id="accountPw"
-            name="accountPw"
-            placeholder="비밀번호"
-            autoComplete="off"
-          />
+          <Field className="common-input first" type="text" id="accountId" name="accountId" placeholder="아이디" autoComplete="off" />
+          <Field className="common-input" type="password" id="accountPw" name="accountPw" placeholder="비밀번호" autoComplete="off" />
           <Field className="common-input last" type="text" id="accountNm" name="accountNm" placeholder="이름" />
           <Button type="submit">회원가입</Button>
           <span className="find">
