@@ -23,15 +23,17 @@ const LoginForm = () => {
     if (isSuccess && data) {
       localStorage.setItem('saveAccountIdYn', saveAccountIdYn.current);
       localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('saveAccountId', data.accountInfo.accountId);
       navigate('/main');
     } else if (isError && error) {
-      if (error.data.name === 'IdNotExistError') {
+      const err: any = error;
+      if (err.data.name === 'IdNotExistError') {
         alert('계정이 존재하지 않습니다.');
-      } else if (error.data.name === 'PasswordIncorrectError') {
+      } else if (err.data.name === 'PasswordIncorrectError') {
         alert('비밀번호가 틀렸습니다.');
-      } else if (error.data.name === 'IdNotUseError') {
+      } else if (err.data.name === 'IdNotUseError') {
         alert('아이디를 사용하고있지 않습니다.');
-      } else if (error.data.name === 'IdDeleteError') {
+      } else if (err.data.name === 'IdDeleteError') {
         alert('계정이 존재하지 않습니다');
       }
     }

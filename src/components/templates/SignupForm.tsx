@@ -19,7 +19,10 @@ const SignupForm = () => {
       localStorage.setItem('accessToken', data.accessToken);
       navigate('/main');
     } else if (isError && error) {
-      alert('회원가입 에러!');
+      const err: any = error;
+      if (err.data.name === 'IdExistError') {
+        alert('아이디가 존재합니다.');
+      }
     }
   }, [isSuccess, isError, data, error, navigate]);
 

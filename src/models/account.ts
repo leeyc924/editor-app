@@ -41,3 +41,10 @@ export interface ILoginResDeta {
   accessToken: string;
   accountInfo: IAccount;
 }
+
+export interface ILoginError {
+  data: {
+    name: string;
+  };
+  status: 400;
+}
