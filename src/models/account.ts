@@ -24,6 +24,7 @@ export interface IAccount {
 
 export interface IAccountSliceState {
   isLogin: boolean;
+  isLoading: boolean;
   accountInfo: IAccount | {};
 }
 
@@ -39,12 +40,10 @@ export interface ISignupReqData extends ILoginReqData {
 
 export interface ILoginResDeta {
   accessToken: string;
+  refreshToken: string;
   accountInfo: IAccount;
 }
 
-export interface ILoginError {
-  data: {
-    name: string;
-  };
-  status: 400;
+export interface IConfirmTokenReqData {
+  accessToken: string;
 }

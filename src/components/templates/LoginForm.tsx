@@ -22,7 +22,6 @@ const LoginForm = () => {
   useEffect(() => {
     if (isSuccess && data) {
       localStorage.setItem('saveAccountIdYn', saveAccountIdYn.current);
-      localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('saveAccountId', data.accountInfo.accountId);
       navigate('/main');
     } else if (isError && error) {
