@@ -23,17 +23,21 @@ const LoginForm = () => {
     if (isSuccess && data) {
       localStorage.setItem('saveAccountIdYn', saveAccountIdYn.current);
       localStorage.setItem('saveAccountId', data.accountInfo.accountId);
-      navigate('/main');
+      navigate('/setting/profile');
     } else if (isError && error) {
       const err: any = error;
-      if (err.data.name === 'IdNotExistError') {
+
+      if (err.data?.name === 'IdNotExistError') {
         alert('계정이 존재하지 않습니다.');
-      } else if (err.data.name === 'PasswordIncorrectError') {
+      } else if (err.data?.name === 'PasswordIncorrectError') {
         alert('비밀번호가 틀렸습니다.');
-      } else if (err.data.name === 'IdNotUseError') {
+      } else if (err.data?.name === 'IdNotUseError') {
         alert('아이디를 사용하고있지 않습니다.');
-      } else if (err.data.name === 'IdDeleteError') {
+      } else if (err.data?.name === 'IdDeleteError') {
         alert('계정이 존재하지 않습니다');
+      } else {
+        alert('로그인 오류');
+        console.log(err);
       }
     }
   }, [navigate, isSuccess, isError, data, error]);

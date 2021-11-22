@@ -1,16 +1,15 @@
-import { useConfirmTokenMutation } from 'modules/accountApi';
-import { accountSelector } from 'modules/accountSlice';
 import React, { ReactNode, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
+import { useConfirmTokenMutation } from 'modules/accountApi';
 
 interface IConfirmTokenProps {
   children: ReactNode;
+  isLogin: boolean;
 }
 
-const ConfirmToken = ({ children }: IConfirmTokenProps) => {
-  const isLogin = useSelector(accountSelector.isLogin);
-  const [confirmToken, { isLoading }] = useConfirmTokenMutation();
+const ConfirmToken = ({ children, isLogin }: IConfirmTokenProps) => {
+  const [confirmToken, { isLoading, isError }] = useConfirmTokenMutation();
+  const navigate = useNavigate();
 
   const { pathname } = useLocation();
 
@@ -21,7 +20,17 @@ const ConfirmToken = ({ children }: IConfirmTokenProps) => {
     }
   }, [confirmToken, isLogin, pathname]);
 
-  return isLoading ? <div>로딩</div> : isLogin ? <>{children}</> : <div>{children}</div>;
+  useEffect(() => {
+    if (isError) {
+      navigate('/account/login');
+    }
+  }, [navigate, isError]);
+
+  return (
+    <>
+      {isLoading ? <div>로딩</div> : children}
+    </>
+  );
 };
 
 export default ConfirmToken;

@@ -17,11 +17,13 @@ const SignupForm = () => {
     if (isSuccess && data) {
       localStorage.setItem('saveAccountIdYn', 'Y');
       localStorage.setItem('accessToken', data.accessToken);
-      navigate('/main');
+      navigate('/setting/profile');
     } else if (isError && error) {
       const err: any = error;
-      if (err.data.name === 'IdExistError') {
+      if (err.data?.name === 'IdExistError') {
         alert('아이디가 존재합니다.');
+      } else {
+        alert('회원가입 오류.');
       }
     }
   }, [isSuccess, isError, data, error, navigate]);

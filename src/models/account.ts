@@ -24,8 +24,7 @@ export interface IAccount {
 
 export interface IAccountSliceState {
   isLogin: boolean;
-  isLoading: boolean;
-  accountInfo: IAccount | {};
+  accountInfo: IAccount | undefined;
 }
 
 
