@@ -14,11 +14,15 @@ const ConfirmToken = ({ children, isLogin }: IConfirmTokenProps) => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (!isLogin && pathname.indexOf('account') < 0) {
+    if (!isLogin) {
       const accessToken = localStorage.getItem('accessToken') || '';
-      confirmToken({ accessToken });
+      if (accessToken) {
+        confirmToken({ accessToken });
+      } else {
+        navigate('/account/login');
+      }
     }
-  }, [confirmToken, isLogin, pathname]);
+  }, [confirmToken, navigate, isLogin, pathname]);
 
   useEffect(() => {
     if (isError) {

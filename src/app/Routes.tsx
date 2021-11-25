@@ -7,6 +7,8 @@ import SignupForm from 'components/templates/SignupForm';
 
 import Setting from 'components/pages/Setting';
 import Profile from 'components/templates/Profile';
+import GroupList from 'components/templates/GroupList';
+import GroupManage from 'components/templates/GroupManage';
 
 const rootRoute: RouteObject = {
   path: '/',
@@ -42,6 +44,19 @@ const settingRouute: RouteObject = {
       path: 'profile',
       element: <Profile />,
     },
+    {
+      path: 'group',
+      children: [
+        {
+          path: 'list',
+          element: <GroupList />,
+        },
+        {
+          path: 'manage',
+          element: <GroupManage />,
+        }
+      ],
+    }
   ],
 };
 
