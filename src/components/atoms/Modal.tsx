@@ -5,17 +5,17 @@ import styled, { keyframes, css } from 'styled-components';
 import { ReactComponent as CloseIcon } from '../assets/images/common/icon-close.svg';
 
 interface IModalProps {
-  title: string;
-  children: string;
-  confirmText: string;
-  cancelText: string;
-  onConfirm: any;
-  onCancel: any;
-  onClose: any;
-  confirmColor: string;
-  cancelColor: string;
+  title?: string;
+  children?: string;
+  confirmText?: string;
+  cancelText?: string;
+  onConfirm?: any;
+  onCancel?: any;
+  onClose?: any;
+  confirmColor?: string;
+  cancelColor?: string;
   visible: boolean;
-  hideXButton: boolean;
+  hideXButton?: boolean;
 }
 
 interface IDarkBackgroundProps {

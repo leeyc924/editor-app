@@ -2,13 +2,13 @@ import { Navigate } from 'react-router-dom';
 import { RouteObject, useRoutes } from 'react-router';
 
 import Account from 'components/pages/Account';
-import LoginForm from 'components/templates/LoginForm';
-import SignupForm from 'components/templates/SignupForm';
+import LoginForm from 'components/templates/account/LoginForm';
+import SignupForm from 'components/templates/account/SignupForm';
 
 import Setting from 'components/pages/Setting';
-import Profile from 'components/templates/Profile';
-import GroupList from 'components/templates/GroupList';
-import GroupManage from 'components/templates/GroupManage';
+import Profile from 'components/templates/setting/Profile';
+import GroupList from 'components/templates/setting/GroupList';
+import GroupManage from 'components/templates/setting/GroupManage';
 
 const rootRoute: RouteObject = {
   path: '/',

@@ -6,7 +6,7 @@ import { FiPlus as AddIcon } from 'react-icons/fi';
 
 const GroupManage = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-console.log(isAddModalOpen);
+
   return (
     <GroupWrap>
       <GroupFilterArea>
