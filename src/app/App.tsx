@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 // import Routes from './Routes';
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <div>a</div>

@@ -1,3 +1,4 @@
+export const a = '';
 // import { Navigate } from 'react-router-dom';
 // import { RouteObject, useRoutes } from 'react-router';
 

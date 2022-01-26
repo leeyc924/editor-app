@@ -1,44 +1,9 @@
-import { createApi, BaseQueryFn } from '@reduxjs/toolkit/query/react';
-import axios, { AxiosRequestConfig, AxiosError } from 'axios';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const developmentUrl = 'http://localhost:8005/editor';
 const productionUrl = 'https://fass-editor-api.herokuapp.com/editor';
 
-const axiosBaseQuery =
-  (
-    { baseUrl }: { baseUrl: string } = { baseUrl: '' },
-  ): BaseQueryFn<
-    {
-      url: string,
-      method: AxiosRequestConfig['method'],
-      data?: AxiosRequestConfig['data'],
-    },
-    unknown,
-    unknown
-  > =>
-  async ({ url, method, data }) => {
-    try {
-      const accessToken = localStorage.getItem('accessToken');
-
-      data.accessToken = accessToken;
-
-      const response = await axios({
-        url: baseUrl + url,
-        method,
-        data,
-      });
-
-      return { data: response.data };
-    } catch (axiosError) {
-      let err = axiosError as AxiosError;
-
-      return {
-        error: { status: err.response?.status, data: err.response?.data },
-      };
-    }
-  };
-
-const baseQuery = axiosBaseQuery({
+const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NODE_ENV !== 'production' ? developmentUrl : productionUrl,
 });
 
