@@ -1,68 +1,45 @@
-export const a = '';
-// import { Navigate } from 'react-router-dom';
-// import { RouteObject, useRoutes } from 'react-router';
+import { Navigate } from 'react-router-dom';
+import { RouteObject, useRoutes } from 'react-router';
 
-// const rootRoute: RouteObject = {
-//   path: '/',
-//   element: <Navigate to="/account/login" />,
-//   children: [
-//     {
-//       index: true,
-//       element: <Navigate to="/account/login" />,
-//     },
-//   ],
-// };
+import Login from '../page/Login'
 
-// const accountRoute: RouteObject = {
-//   path: 'account',
-//   element: <Account />,
-//   children: [
-//     {
-//       path: 'login',
-//       element: <LoginForm />,
-//     },
-//     {
-//       path: 'signup',
-//       element: <SignupForm />,
-//     },
-//   ],
-// };
+const rootRoute: RouteObject = {
+  path: '/',
+  element: <Navigate to="/account/login" />,
+  children: [
+    {
+      index: true,
+      element: <Navigate to="/account/login" />,
+    },
+  ],
+};
 
-// const settingRouute: RouteObject = {
-//   path: 'setting',
-//   element: <Setting />,
-//   children: [
-//     {
-//       path: 'profile',
-//       element: <Profile />,
-//     },
-//     {
-//       path: 'group',
-//       children: [
-//         {
-//           path: 'list',
-//           element: <GroupList />,
-//         },
-//         {
-//           path: 'manage',
-//           element: <GroupManage />,
-//         }
-//       ],
-//     }
-//   ],
-// };
+const accountRoute: RouteObject = {
+  path: 'account/*',
+  element: <Login />,
+  children: [
+    {
+      path: 'login',
+      element: <Login />,
+    },
+    // {
+    //   path: 'signup',
+      // element: <SignupForm />,
+    // },
+  ],
+};
 
-// const noMatchRoutes: RouteObject = {
-//   path: '*',
-//   element: <Navigate to="/" />,
-// };
+const noMatchRoutes: RouteObject = {
+  path: '*',
+  element: <Navigate to="/" />,
+};
 
-// const routeList: RouteObject[] = [noMatchRoutes, rootRoute, accountRoute, settingRouute];
+const routeList: RouteObject[] = [noMatchRoutes, rootRoute, accountRoute];
 
-// const Routes = () => {
-//   const element = useRoutes(routeList);
+const Routes = () => {
+  const element = useRoutes(routeList);
 
-//   return element;
-// };
+  return element;
+};
 
-// export default Routes;
+export default Routes;
